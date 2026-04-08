@@ -171,66 +171,66 @@ export default function App() {
   const isTodayDone = !!state.completed[todayIdx];
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-[#f0f0f0] font-sans p-8 pb-16" dir="rtl">
+    <div className="min-h-screen bg-[#0a0a0a] text-[#f0f0f0] font-sans p-4 sm:p-8 pb-24" dir="rtl">
       <div className="max-w-[480px] mx-auto">
         
         {/* Header */}
-        <div className="flex flex-col gap-1.5 mb-10">
+        <div className="flex flex-col gap-1.5 mb-8 sm:mb-10">
           <div className="flex items-center justify-between">
-            <div className="text-[11px] font-semibold tracking-widest uppercase text-[#c8f065] border border-[#c8f065] px-2.5 py-0.5 rounded-sm">
+            <div className="text-[10px] sm:text-[11px] font-semibold tracking-widest uppercase text-[#c8f065] border border-[#c8f065] px-2 py-0.5 rounded-sm">
               تحدي العقلة
             </div>
-            <div className="text-[13px] text-[#999]">
+            <div className="text-xs sm:text-[13px] text-[#999]">
               سلسلة: <span className="text-[#c8f065] font-bold">{stats.currentActiveStreak}</span> يوم
             </div>
           </div>
-          <h1 className="text-4xl md:text-[42px] font-bold leading-tight tracking-tight text-[#f0f0f0]">
+          <h1 className="text-3xl sm:text-4xl md:text-[42px] font-bold leading-tight tracking-tight text-[#f0f0f0] mt-1">
             ثبات <em className="text-[#c8f065] not-italic">21 يوم</em>
           </h1>
-          <p className="text-[13px] text-[#555] mt-1">
+          <p className="text-xs sm:text-[13px] text-[#555] mt-1">
             21 يوم متواصل بدون انقطاع — الهدف: تطويل العمود الفقري
           </p>
         </div>
 
         {/* Progress Bar */}
-        <div className="mb-8">
-          <div className="flex justify-between text-xs text-[#555] mb-2">
+        <div className="mb-6 sm:mb-8">
+          <div className="flex justify-between text-[11px] sm:text-xs text-[#555] mb-2">
             <span>{stats.doneCount} يوم مكتمل</span>
             <span>{21 - stats.doneCount} متبقي</span>
           </div>
-          <div className="h-1 bg-[#1e1e1e] rounded-sm overflow-hidden">
+          <div className="h-1.5 sm:h-1 bg-[#1e1e1e] rounded-full overflow-hidden">
             <div 
-              className="h-full bg-[#c8f065] rounded-sm transition-all duration-700 ease-out"
+              className="h-full bg-[#c8f065] rounded-full transition-all duration-700 ease-out"
               style={{ width: `${pct}%` }}
             />
           </div>
         </div>
 
         {/* Stats Row */}
-        <div className="grid grid-cols-3 gap-3 mb-9">
-          <div className="bg-[#111] border border-[#1e1e1e] rounded-md p-4 text-center">
-            <div className="text-2xl font-bold text-[#c8f065] leading-none mb-1">{stats.doneCount}</div>
-            <div className="text-[11px] text-[#555] tracking-wide">يوم مكتمل</div>
+        <div className="grid grid-cols-3 gap-2 sm:gap-3 mb-8 sm:mb-9">
+          <div className="bg-[#111] border border-[#1e1e1e] rounded-xl sm:rounded-md p-3 sm:p-4 text-center">
+            <div className="text-xl sm:text-2xl font-bold text-[#c8f065] leading-none mb-1.5 sm:mb-1">{stats.doneCount}</div>
+            <div className="text-[10px] sm:text-[11px] text-[#555] tracking-wide">يوم مكتمل</div>
           </div>
-          <div className="bg-[#111] border border-[#1e1e1e] rounded-md p-4 text-center">
-            <div className="text-2xl font-bold text-[#c8f065] leading-none mb-1">{stats.maxStreak}</div>
-            <div className="text-[11px] text-[#555] tracking-wide">أطول سلسلة</div>
+          <div className="bg-[#111] border border-[#1e1e1e] rounded-xl sm:rounded-md p-3 sm:p-4 text-center">
+            <div className="text-xl sm:text-2xl font-bold text-[#c8f065] leading-none mb-1.5 sm:mb-1">{stats.maxStreak}</div>
+            <div className="text-[10px] sm:text-[11px] text-[#555] tracking-wide">أطول سلسلة</div>
           </div>
-          <div className="bg-[#111] border border-[#1e1e1e] rounded-md p-4 text-center">
-            <div className="text-2xl font-bold text-[#c8f065] leading-none mb-1">{stats.totalReps}</div>
-            <div className="text-[11px] text-[#555] tracking-wide">إجمالي تكرار</div>
+          <div className="bg-[#111] border border-[#1e1e1e] rounded-xl sm:rounded-md p-3 sm:p-4 text-center">
+            <div className="text-xl sm:text-2xl font-bold text-[#c8f065] leading-none mb-1.5 sm:mb-1">{stats.totalReps}</div>
+            <div className="text-[10px] sm:text-[11px] text-[#555] tracking-wide">إجمالي تكرار</div>
           </div>
         </div>
 
         {/* Days Grid */}
         <div className="mb-8">
-          <div className="text-xs text-[#555] tracking-widest uppercase mb-3.5">خريطة الأيام</div>
-          <div className="grid grid-cols-7 gap-2">
+          <div className="text-[11px] sm:text-xs text-[#555] tracking-widest uppercase mb-3 sm:mb-3.5">خريطة الأيام</div>
+          <div className="grid grid-cols-7 gap-1.5 sm:gap-2">
             {PLAN.map((p, i) => {
               const isDone = !!state.completed[i];
               const isToday = i === todayIdx;
               
-              let cellClasses = "aspect-square rounded-md border flex flex-col items-center justify-center relative gap-0.5 transition-all duration-150 ";
+              let cellClasses = "aspect-square rounded-lg sm:rounded-md border flex flex-col items-center justify-center relative gap-0.5 transition-all duration-150 active:scale-90 ";
               
               if (isDone) {
                 cellClasses += "bg-[#141a04] border-[#c8f065] text-[#c8f065]";
@@ -250,12 +250,12 @@ export default function App() {
                   title={isToday && !isDone ? 'اضغط لتسجيل اليوم' : ''}
                 >
                   {isDone && (
-                    <span className="absolute top-1 left-1.5 text-[9px] font-bold text-[#c8f065]">✓</span>
+                    <span className="absolute top-1 left-1 sm:left-1.5 text-[8px] sm:text-[9px] font-bold text-[#c8f065]">✓</span>
                   )}
-                  <span className={`text-sm font-bold leading-none ${isDone ? 'text-[#c8f065]' : 'text-[#f0f0f0]'}`}>
+                  <span className={`text-xs sm:text-sm font-bold leading-none ${isDone ? 'text-[#c8f065]' : 'text-[#f0f0f0]'}`}>
                     {p.day}
                   </span>
-                  <span className="text-[9px] text-[#555] tracking-wide">
+                  <span className="text-[8px] sm:text-[9px] text-[#555] tracking-wide">
                     {isDone ? 'تم' : (isToday ? 'اليوم' : '')}
                   </span>
                 </div>
@@ -265,21 +265,21 @@ export default function App() {
         </div>
 
         {/* Action Bar */}
-        <div className="bg-[#111] border border-[#1e1e1e] border-r-4 border-r-[#c8f065] rounded-md p-4 md:p-5 flex items-center justify-between gap-4 mb-8">
+        <div className="bg-[#111] border border-[#1e1e1e] border-r-4 border-r-[#c8f065] rounded-xl sm:rounded-md p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-4 mb-8">
           {isTodayDone || todayIdx > 20 ? (
-            <div className="text-sm font-semibold text-[#c8f065] w-full text-center">
+            <div className="text-sm font-semibold text-[#c8f065] w-full text-center py-2">
               ✓ اليوم {todayPlan.day} مكتمل — {todayPlan.reps} تكرار
             </div>
           ) : (
             <>
-              <div className="flex flex-col gap-1 flex-1">
-                <span className="text-[11px] text-[#c8f065] tracking-widest uppercase">اليوم {todayPlan.day}</span>
-                <span className="text-[22px] font-bold text-[#f0f0f0] leading-none">{todayPlan.reps} تكرار</span>
-                <span className="text-xs text-[#555]">{todayPlan.desc}</span>
+              <div className="flex flex-col gap-1.5 sm:gap-1 flex-1">
+                <span className="text-[10px] sm:text-[11px] text-[#c8f065] tracking-widest uppercase">اليوم {todayPlan.day}</span>
+                <span className="text-xl sm:text-[22px] font-bold text-[#f0f0f0] leading-none">{todayPlan.reps} تكرار</span>
+                <span className="text-[11px] sm:text-xs text-[#555] leading-relaxed">{todayPlan.desc}</span>
               </div>
               <button 
                 onClick={() => completeDay(todayIdx)}
-                className="bg-[#c8f065] hover:bg-[#d8ff77] text-[#0a0a0a] border-none rounded-md px-5 py-3 text-sm font-bold whitespace-nowrap transition-all duration-150 hover:-translate-y-[1px]"
+                className="w-full sm:w-auto bg-[#c8f065] hover:bg-[#d8ff77] active:scale-95 text-[#0a0a0a] border-none rounded-lg sm:rounded-md px-5 py-3.5 sm:py-3 text-sm font-bold whitespace-nowrap transition-all duration-150 sm:hover:-translate-y-[1px]"
               >
                 ✓ سجّل اليوم
               </button>
@@ -288,15 +288,15 @@ export default function App() {
         </div>
 
         {/* Reminder Settings */}
-        <div className="bg-[#111] border border-[#1e1e1e] rounded-md p-4 md:p-5 mb-8">
-          <div className="flex items-center justify-between">
+        <div className="bg-[#111] border border-[#1e1e1e] rounded-xl sm:rounded-md p-4 sm:p-5 mb-8">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-0">
             <div>
               <div className="text-sm font-bold text-[#f0f0f0]">تذكير يومي</div>
-              <div className="text-[11px] text-[#555] mt-1">احصل على إشعار لتذكيرك بالتمرين (يجب ترك الموقع مفتوحاً)</div>
+              <div className="text-[10px] sm:text-[11px] text-[#555] mt-1 leading-relaxed">احصل على إشعار لتذكيرك بالتمرين (يجب ترك الموقع مفتوحاً)</div>
             </div>
             <button
               onClick={toggleReminder}
-              className={`px-4 py-2 rounded text-xs font-bold transition-colors ${
+              className={`w-full sm:w-auto px-4 py-2.5 sm:py-2 rounded-lg sm:rounded text-xs font-bold transition-all active:scale-95 ${
                 state.reminderEnabled 
                   ? 'bg-[#c8f065] text-[#0a0a0a]' 
                   : 'bg-[#222] text-[#f0f0f0] hover:bg-[#333]'
@@ -313,7 +313,7 @@ export default function App() {
                 type="time" 
                 value={state.reminderTime || '09:00'} 
                 onChange={(e) => setState(prev => ({ ...prev, reminderTime: e.target.value }))}
-                className="bg-[#1a1a1a] border border-[#333] text-[#f0f0f0] text-sm rounded px-3 py-1.5 outline-none focus:border-[#c8f065] transition-colors"
+                className="bg-[#1a1a1a] border border-[#333] text-[#f0f0f0] text-sm rounded-lg sm:rounded px-3 py-2 sm:py-1.5 outline-none focus:border-[#c8f065] transition-colors"
                 dir="ltr"
               />
             </div>
@@ -324,7 +324,7 @@ export default function App() {
         <div className="text-center">
           <button 
             onClick={confirmReset}
-            className="bg-transparent border border-[#222] hover:border-[#444] text-[#333] hover:text-[#555] rounded px-5 py-2 text-xs tracking-wide transition-colors duration-150"
+            className="bg-transparent border border-[#222] hover:border-[#444] active:scale-95 text-[#333] hover:text-[#555] rounded-lg sm:rounded px-5 py-2.5 sm:py-2 text-xs tracking-wide transition-all duration-150"
           >
             إعادة التحدي من البداية
           </button>
@@ -339,7 +339,7 @@ export default function App() {
             initial={{ opacity: 0, y: 50, x: '-50%' }}
             animate={{ opacity: 1, y: 0, x: '-50%' }}
             exit={{ opacity: 0, y: 50, x: '-50%' }}
-            className="fixed bottom-8 left-1/2 bg-[#c8f065] text-[#0a0a0a] font-bold text-[13px] px-6 py-3 rounded whitespace-nowrap z-50"
+            className="fixed bottom-8 left-1/2 bg-[#c8f065] text-[#0a0a0a] font-bold text-[13px] px-6 py-3 rounded-full shadow-lg whitespace-nowrap z-50"
           >
             {toast}
           </motion.div>
